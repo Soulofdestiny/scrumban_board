@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <style>
+    body {background-color: white;}
+    .page {
+        display: table;
+        width: 100%;
+    }
+
+    .col {
+        display: table-cell;
+    }
+
+    @media only screen and (max-width: 800px) {
+      .col {
+          display: block;
+          width: 100%;
+      }
+    }
+  </style>
+  <body>
+    <p>Last updated: {{ data['meta']['current_time'] }}</p>
+    <p>Amount of tickets: {{ data['metrics']['total-tickets'] }}</p>
+    <br>
+    <div class='page'>
+        <div class='col'>
+            <img src={{ url_cycle }} alt="Chart_cycle" height=50%>
+            <table>
+              <tr><td>Mean cycle time:     </td><td align='right'>{{ data['metrics']['mean-cycle'] }}</td></tr>  
+              <tr><td>Median cycle time    </td><td align='right'>{{ data['metrics']['median-cycle'] }}</td></tr> 
+              <tr><td>Minimum cycle time:  </td><td align='right'>{{ data['metrics']['min-cycle'] }}</td></tr> 
+              <tr><td>Maximum cycle time:  </td><td align='right'>{{ data['metrics']['max-cycle'] }}</td></tr> 
+            </table>
+        </div>
+        <div class='col'>
+          <img src={{ url_lead }} alt="Chart_lead" height=50%>
+          <table>
+              <tr><td>Mean lead time:      </td><td align='right'>{{ data['metrics']['mean-lead'] }}</td></tr> 
+              <tr><td>Median lead time:    </td><td align='right'>{{ data['metrics']['median-lead'] }}</td></tr> 
+              <tr><td>Minimum lead time:   </td><td align='right'>{{ data['metrics']['min-lead'] }}</td></tr> 
+              <tr><td>Maximum lead time:   </td><td align='right'>{{ data['metrics']['max-lead'] }}</td></tr> 
+          </table>
+        </div>
+      </div>
+  </body>
+</html>
